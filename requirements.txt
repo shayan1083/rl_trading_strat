@@ -2,10 +2,13 @@ numpy
 pandas
 matplotlib
 seaborn
-sklearn
+scikit-learn
 datetime
-math
-random
 
 keras
-collections
+
+ipykernel
+
+torch
+
+yfinance
