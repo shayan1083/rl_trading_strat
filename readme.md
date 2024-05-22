@@ -50,3 +50,6 @@ To implement the DQN algorithm, several functions and modules are implemented th
 - Agent Class: The agent is defined as "Agent" class, that holds variables and member functions that perform the Q learning. An object of the "Agent" class  is created using the training phase and is used for training the model
 - Helper Functions: Additional functions to help with training
 - Training Module: Perform the training of the data. This will give one of three actions based on the states of the stock prices at the end of the day. During training, the action for each day is predicted, the rewards are computed, and the model weights are updated iteratively over a number of episodes (epochs). Additionally, the PnL (profit and loss) of each action is summed up to see whether an overall profit has occured. The aim is to maximize the total profit.
+
+5/22/24 Commit:
+Training Loss is not decreasing; agent is not making progress in increasing profit. Commit changes so that incase major restructuring messes up code I can pull original code back.
