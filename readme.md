@@ -47,9 +47,20 @@ Step 3:
 The algorithm deciedes whether to buy, sell, or hold, when provided with the current market price. The algorithm is based on the "Q-learning" approach and uses Deep Q Learning to come up with a policy. The name Q learning comes from the Q(s, a) function where, based on state 's' and action 'a', the expected reward is returned
 
 To implement the DQN algorithm, several functions and modules are implemented that interact with each other during the model training: 
-- Agent Class: The agent is defined as "Agent" class, that holds variables and member functions that perform the Q learning. An object of the "Agent" class  is created using the training phase and is used for training the model
-- Helper Functions: Additional functions to help with training
+- Memory Class: The Agent stores its experiences in a dequeue called Memory. Its functions include pushing an experience to memory, getting a random sample of the experiences, and getting the length of the memory
+
+- DQN Class: Deep Q learning uses a neural network, which this class creates. It creates the layers, the loss function, optimizer, and sets the learning rate. It contains functions to perform a forward pass on the model, and train the model using gradient descent. 
+    - Model Architecture: The model outputs a separate output unit for each possible action, and only the state representation is passed into the neural network as input. The outputs correspond to the predicted Q-values of the individual action for the input state. The main advantage of this architecture is the ability to compute Q-values for all possible actions in a given state with only a single forward pass through the network. 
+
+- Agent Class: The agent is defined as "Agent" class, that holds variables and member functions that perform the Q learning. An object of the "Agent" class  is created using the training phase and is used for training the model. It has a function act that chooses an action using epsilon greedy policy, and it has experience replay. 
+    - Experience Replay: The agent's experiences at each time step are stored in memory. Experiences take the form of (state, action, reward, next_state) tuples. Durring the inner loop of the training module, apply minibatch updates to the experiences that are randomly sampled from memory. Random Sampling is beneficial because each step of exerpience is potentially used in many weight updates, which allows for greater data efficiency. Also, learning from consecutive samples is inefficient, due to strong correlations between samples. Randomizing samples breaks correlations and therefore reduces the variance of the updates. 
+
+- Helper Functions: Additional functions to help during training
+
 - Training Module: Perform the training of the data. This will give one of three actions based on the states of the stock prices at the end of the day. During training, the action for each day is predicted, the rewards are computed, and the model weights are updated iteratively over a number of episodes (epochs). Additionally, the PnL (profit and loss) of each action is summed up to see whether an overall profit has occured. The aim is to maximize the total profit.
 
 5/22/24 Commit:
 Training Loss is not decreasing; agent is not making progress in increasing profit. Commit changes so that incase major restructuring messes up code I can pull original code back.
+
+6/4/24 Commit:
+increased to 15 years of data. 12 years of training, 3 of test. added one layer in neural net, increased number of neurons. added some more plotting functions. Training results in not buying anything or only buying.
