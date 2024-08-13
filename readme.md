@@ -1,3 +1,7 @@
+A super basic trading strategy that can tell when to buy and sell a stock using Deep Q Learning. I followed the original jupyter notebook here: https://github.com/tatsath/fin-ml/blob/master/Chapter%209%20-%20Reinforcement%20Learning/Case%20Study%201%20-%20Reinforcement%20Learning%20based%20Trading%20Strategy/ReinforcementLearningBasedTradingStrategy.ipynb
+
+As of right now, the neural network is not buying or buying too much. Ill get back to it when i have the time. 
+
 Create VENV:
 1) Enter terminal
 2) navigate to main folder
